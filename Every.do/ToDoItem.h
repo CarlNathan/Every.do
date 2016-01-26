@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, priority) {
+    complete = 0,
+    high = 2,
+    low = 1
+};
+
 @interface ToDoItem : NSObject
 
 @property (strong, nonatomic) NSString *title;
