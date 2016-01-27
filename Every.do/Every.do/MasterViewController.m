@@ -22,9 +22,9 @@
     [super viewDidLoad];
     
     //setup toDoList
-    ToDoItem *itemGroceries = [ToDoItem ToDoItemWithTitle:@"Get Groceries" description:@"Need to go to the store to get some food!" priority:high];
-    ToDoItem *itemGetMoreExercise = [ToDoItem ToDoItemWithTitle:@"Exercise" description:@"Need to go to the gym more often!" priority:low];
-    ToDoItem *itemGetGift = [ToDoItem ToDoItemWithTitle:@"Buy Gift" description:@"Need to go get a great birthday gift for some person whose birthday it is going to be!" priority:low];
+    ToDoItem *itemGroceries = [ToDoItem ToDoItemWithTitle:@"Get Groceries" description:@"Need to go to the store to get some food!" priority:high date:[NSDate date]];
+    ToDoItem *itemGetMoreExercise = [ToDoItem ToDoItemWithTitle:@"Exercise" description:@"Need to go to the gym more often!" priority:low date:[NSDate date]];
+    ToDoItem *itemGetGift = [ToDoItem ToDoItemWithTitle:@"Buy Gift" description:@"Need to go get a great birthday gift for some person whose birthday it is going to be!" priority:low date:[NSDate date]];
 
     self.objects = [@[itemGroceries, itemGetMoreExercise, itemGetGift] mutableCopy];
     
@@ -113,7 +113,7 @@
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    return 70.0;
+    return 110.0;
 }
 
 - (void) didSwipeRight: (UISwipeGestureRecognizer *)sender {

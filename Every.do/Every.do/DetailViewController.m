@@ -22,6 +22,7 @@
     if (self.toDoItem) {
         self.titleTextField.text = self.toDoItem.title;
         self.descriptionTextView.text = self.toDoItem.itemDescription;
+        self.datePicker.date = self.toDoItem.date;
         if (self.toDoItem.isCompleted) {
             [self.completedSwitch setOn:YES animated:NO];
             [self setPriorityLow];
@@ -84,6 +85,7 @@
 -(void)updateToDoList{
     self.toDoItem.title = self.titleTextField.text;
     self.toDoItem.itemDescription = self.descriptionTextView.text;
+    self.toDoItem.date = self.datePicker.date;
     if (self.completedSwitch.on) {
         self.toDoItem.isCompleted = YES;
     } else {
@@ -107,7 +109,7 @@
     } else {
         priority = complete;
     }
-    ToDoItem *item = [ToDoItem ToDoItemWithTitle:self.titleTextField.text description:self.descriptionTextView.text priority:priority];
+    ToDoItem *item = [ToDoItem ToDoItemWithTitle:self.titleTextField.text description:self.descriptionTextView.text priority:priority date:self.datePicker.date];
     if (item.priority == complete){
         item.isCompleted = YES;
     }

@@ -14,6 +14,7 @@
 @property (assign, nonatomic) NSInteger priority;
 @property (assign, nonatomic) BOOL isCompleted;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *prioritySegmentedControl;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end
 
@@ -23,6 +24,11 @@
 - (void)configureCellForEntry:(ToDoItem *)item{
     self.titleLabel.text = item.title;
     self.descriptionLabel.text = item.itemDescription;
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/YYYY"];
+    NSString *stringFromDate = [formatter stringFromDate:item.date];
+    self.dateLabel.text = stringFromDate;
     if (item.isCompleted) {
         //strikethrough
         NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:item.title];

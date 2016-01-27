@@ -20,7 +20,8 @@ typedef NS_ENUM(NSInteger, priority) {
 @property (strong, nonatomic) NSString *itemDescription;
 @property (assign, nonatomic) NSInteger priority;
 @property (assign, nonatomic) BOOL isCompleted;
+@property (strong, nonatomic) NSDate *date;
 
-+ (instancetype) ToDoItemWithTitle: (NSString *)title description:(NSString *) itemDescription priority: (NSInteger) priority;
++ (instancetype) ToDoItemWithTitle: (NSString *)title description:(NSString *) itemDescription priority: (NSInteger) priority date: (NSDate *) date;
 
 @end

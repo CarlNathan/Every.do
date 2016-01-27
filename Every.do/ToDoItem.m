@@ -10,8 +10,9 @@
 
 @implementation ToDoItem
 
-+ (instancetype) ToDoItemWithTitle: (NSString *)title description:(NSString *) itemDescription priority: (NSInteger) priority{
++ (instancetype) ToDoItemWithTitle: (NSString *)title description:(NSString *) itemDescription priority: (NSInteger) priority date:(NSDate *)date{
     ToDoItem *item = [[ToDoItem alloc] init];
+    item.date = date;
     item.title = title;
     item.itemDescription = itemDescription;
     item.priority = priority;
