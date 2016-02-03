@@ -23,7 +23,7 @@
         self.titleTextField.text = self.toDoItem.title;
         self.descriptionTextView.text = self.toDoItem.itemDescription;
         self.datePicker.date = self.toDoItem.date;
-        if (self.toDoItem.isCompleted) {
+        if (self.toDoItem.priority == complete) {
             [self.completedSwitch setOn:YES animated:NO];
             [self setPriorityLow];
         } else {
@@ -87,9 +87,7 @@
     self.toDoItem.itemDescription = self.descriptionTextView.text;
     self.toDoItem.date = self.datePicker.date;
     if (self.completedSwitch.on) {
-        self.toDoItem.isCompleted = YES;
-    } else {
-        self.toDoItem.isCompleted = NO;
+        self.toDoItem.priority = complete;
     }
     if ([self.priorityButton.titleLabel.text isEqualToString:@"High Priority"]) {
         self.toDoItem.priority = high;
@@ -98,6 +96,11 @@
     } else {
         self.toDoItem.priority = complete;
     }
+    
+    CoreDataStack *defaultStack = [CoreDataStack defaultStack];
+    [defaultStack saveContext];
+
+
 }
 
 - (void) insertToDoItem{
@@ -109,11 +112,16 @@
     } else {
         priority = complete;
     }
-    ToDoItem *item = [ToDoItem ToDoItemWithTitle:self.titleTextField.text description:self.descriptionTextView.text priority:priority date:self.datePicker.date];
-    if (item.priority == complete){
-        item.isCompleted = YES;
-    }
-    [self.delegate insertToDoItemWithToDoItem: item];
+    CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
+    ToDoItem *item = [NSEntityDescription insertNewObjectForEntityForName:@"ToDoItem" inManagedObjectContext:coreDataStack.managedObjectContext];
+    item.title = self.titleTextField.text;
+    item.itemDescription = self.descriptionTextView.text;
+    item.priority = priority;
+    item.date = self.datePicker.date;
+    //ToDoItem *item = [ToDoItem ToDoItemWithTitle:self.titleTextField.text description:self.descriptionTextView.text priority:priority date:self.datePicker.date];
+    //[self.delegate insertToDoItemWithToDoItem: item];
+    [coreDataStack saveContext];
+    NSLog(@"Saved Item");
 }
 
 - (void) setPriorityLow {

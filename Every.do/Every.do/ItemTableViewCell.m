@@ -29,7 +29,7 @@
     [formatter setDateFormat:@"MM/dd/YYYY"];
     NSString *stringFromDate = [formatter stringFromDate:item.date];
     self.dateLabel.text = stringFromDate;
-    if (item.isCompleted) {
+    if (item.priority == complete) {
         //strikethrough
         NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:item.title];
         [attributeString addAttribute:NSStrikethroughStyleAttributeName

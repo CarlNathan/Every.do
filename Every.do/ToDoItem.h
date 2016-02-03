@@ -2,26 +2,27 @@
 //  ToDoItem.h
 //  Every.do
 //
-//  Created by Carl Udren on 1/26/16.
+//  Created by Carl Udren on 2/3/16.
 //  Copyright © 2016 Carl Udren. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-typedef NS_ENUM(NSInteger, priority) {
+NS_ASSUME_NONNULL_BEGIN
+
+typedef NS_ENUM(int16_t, priority) {
     complete = 0,
     high = 2,
     low = 1
 };
 
-@interface ToDoItem : NSObject
+@interface ToDoItem : NSManagedObject
 
-@property (strong, nonatomic) NSString *title;
-@property (strong, nonatomic) NSString *itemDescription;
-@property (assign, nonatomic) NSInteger priority;
-@property (assign, nonatomic) BOOL isCompleted;
-@property (strong, nonatomic) NSDate *date;
-
-+ (instancetype) ToDoItemWithTitle: (NSString *)title description:(NSString *) itemDescription priority: (NSInteger) priority date: (NSDate *) date;
+// Insert code here to declare functionality of your managed object subclass
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#import "ToDoItem+CoreDataProperties.h"

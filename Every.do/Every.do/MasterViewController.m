@@ -10,10 +10,13 @@
 #import "DetailViewController.h"
 #import "ToDoItem.h"
 #import "ItemTableViewCell.h"
+#import "CoreDataStack.h"
 
-@interface MasterViewController () <toDoDetailDelegate>
+@interface MasterViewController () <NSFetchedResultsControllerDelegate>
 
-@property NSMutableArray *objects;
+//@property NSMutableArray *objects;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+
 @end
 
 @implementation MasterViewController
@@ -22,11 +25,11 @@
     [super viewDidLoad];
     
     //setup toDoList
-    ToDoItem *itemGroceries = [ToDoItem ToDoItemWithTitle:@"Get Groceries" description:@"Need to go to the store to get some food!" priority:high date:[NSDate date]];
-    ToDoItem *itemGetMoreExercise = [ToDoItem ToDoItemWithTitle:@"Exercise" description:@"Need to go to the gym more often!" priority:low date:[NSDate date]];
-    ToDoItem *itemGetGift = [ToDoItem ToDoItemWithTitle:@"Buy Gift" description:@"Need to go get a great birthday gift for some person whose birthday it is going to be!" priority:low date:[NSDate date]];
-
-    self.objects = [@[itemGroceries, itemGetMoreExercise, itemGetGift] mutableCopy];
+//    ToDoItem *itemGroceries = [ToDoItem ToDoItemWithTitle:@"Get Groceries" description:@"Need to go to the store to get some food!" priority:high date:[NSDate date]];
+//    ToDoItem *itemGetMoreExercise = [ToDoItem ToDoItemWithTitle:@"Exercise" description:@"Need to go to the gym more often!" priority:low date:[NSDate date]];
+//    ToDoItem *itemGetGift = [ToDoItem ToDoItemWithTitle:@"Buy Gift" description:@"Need to go get a great birthday gift for some person whose birthday it is going to be!" priority:low date:[NSDate date]];
+//
+//    self.objects = [@[itemGroceries, itemGetMoreExercise, itemGetGift] mutableCopy];
     
     //navigation items
     
@@ -41,27 +44,14 @@
     [self.tableView addGestureRecognizer:swipteComplete];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    self.clearsSelectionOnViewWillAppear = self.splitViewController.isCollapsed;
-    //sort descriptor
-    
-    NSSortDescriptor *sortDescriptor;
-    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"priority"
-                                                 ascending:NO];
-    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-    NSArray *sortedArray = [self.objects sortedArrayUsingDescriptors:sortDescriptors];
-    self.objects = [sortedArray mutableCopy];
-
-    
+-(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.tableView reloadData];
+    [self.fetchedResultsController performFetch:nil];
 }
 
 
+
 - (void)insertNewObject:(id)sender {
-    if (!self.objects) {
-        self.objects = [[NSMutableArray alloc] init];
-    }
     [self performSegueWithIdentifier:@"newItem" sender:nil];
 }
 
@@ -70,30 +60,32 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        ToDoItem *object = self.objects[indexPath.row];
+        //ToDoItem *object = self.objects[indexPath.row];
+        ToDoItem *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
         DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
         controller.toDoItem = object;
-        controller.delegate = self;
     } else if ([[segue identifier] isEqualToString:@"newItem"]) {
-        DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
-        controller.delegate = self;
+//        DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
     }
 }
 
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return self.fetchedResultsController.sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.objects.count;
+    //return self.objects.count;
+    id <NSFetchedResultsSectionInfo> sectionsInfo = [self.fetchedResultsController sections][section];
+    return [sectionsInfo numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    ToDoItem *object = self.objects[indexPath.row];
+    //ToDoItem *object = self.objects[indexPath.row];
+    ToDoItem *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [cell configureCellForEntry:object];
     return cell;
 }
@@ -105,8 +97,12 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.objects removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        //[self.objects removeObjectAtIndex:indexPath.row];
+        CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
+        ToDoItem *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [[coreDataStack managedObjectContext] deleteObject:item];
+        [coreDataStack saveContext];
+        //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
@@ -120,18 +116,72 @@
     CGPoint location = [sender locationInView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
     if (indexPath) {
-        ToDoItem *item = (ToDoItem *) self.objects[indexPath.row];
-        item.isCompleted = YES;
+        //ToDoItem *item = (ToDoItem *) self.objects[indexPath.row];
+        ToDoItem *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
         item.priority = complete;
         [self.tableView reloadData];
     }
     
 }
 #pragma Mark - Detail Delegate
+//  Never used, core data save in detail view instead.
+//- (void) insertToDoItemWithToDoItem: (ToDoItem *) item{
+//    CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
+//    coreDataStack 
+//}
 
-- (void) insertToDoItemWithToDoItem: (ToDoItem *) item{
-    [self.objects addObject:item];
-    [self.tableView reloadData];
+#pragma Mark - FetchedResultsController Delegate
+
+- (NSFetchRequest *)entryListFetchRequest {
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"ToDoItem"];
+    
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"priority" ascending:NO],[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
+    return fetchRequest;
 }
+
+- (NSFetchedResultsController *) fetchedResultsController {
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
+    NSFetchRequest *fetchRequest = [self entryListFetchRequest];
+    _fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:fetchRequest managedObjectContext:coreDataStack.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    _fetchedResultsController.delegate = self;
+    
+    return _fetchedResultsController;
+    
+}
+-(void)controllerWillChangeContent:(NSFetchedResultsController *)controller{
+    [self.tableView beginUpdates];
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath{
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [self.tableView reloadData];
+            break;
+    }
+}
+
+
+-(void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
+    [self.tableView endUpdates];
+}
+
+
+
 
 @end

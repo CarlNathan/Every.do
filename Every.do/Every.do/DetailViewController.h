@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ToDoItem.h"
+#import "CoreDataStack.h"
 
 @protocol toDoDetailDelegate <NSObject>
 

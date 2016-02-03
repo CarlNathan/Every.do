@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED010AE21C6280ED00117C00 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = ED010AE11C6280ED00117C00 /* CoreDataStack.m */; };
+		ED010AE51C62810600117C00 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED010AE31C62810600117C00 /* Model.xcdatamodeld */; };
+		ED010AF91C629A6A00117C00 /* ToDoItem+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = ED010AF61C629A6A00117C00 /* ToDoItem+CoreDataProperties.m */; };
+		ED010AFA1C629A6A00117C00 /* ToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED010AF81C629A6A00117C00 /* ToDoItem.m */; };
 		EDD420361C57B87D00B20D4E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD420351C57B87D00B20D4E /* main.m */; };
 		EDD420391C57B87D00B20D4E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD420381C57B87D00B20D4E /* AppDelegate.m */; };
 		EDD4203C1C57B87D00B20D4E /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4203B1C57B87D00B20D4E /* MasterViewController.m */; };
@@ -16,7 +20,6 @@
 		EDD420471C57B87D00B20D4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDD420451C57B87D00B20D4E /* LaunchScreen.storyboard */; };
 		EDD420521C57B87D00B20D4E /* Every_doTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD420511C57B87D00B20D4E /* Every_doTests.m */; };
 		EDD4205D1C57B87D00B20D4E /* Every_doUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4205C1C57B87D00B20D4E /* Every_doUITests.m */; };
-		EDD4206C1C57BFF600B20D4E /* ToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4206B1C57BFF600B20D4E /* ToDoItem.m */; };
 		EDD4206F1C57CDD800B20D4E /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4206E1C57CDD800B20D4E /* ItemTableViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED010AE01C6280ED00117C00 /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataStack.h; path = ../CoreDataStack.h; sourceTree = "<group>"; };
+		ED010AE11C6280ED00117C00 /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataStack.m; path = ../CoreDataStack.m; sourceTree = "<group>"; };
+		ED010AE41C62810600117C00 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		ED010AF51C629A6A00117C00 /* ToDoItem+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ToDoItem+CoreDataProperties.h"; path = "../ToDoItem+CoreDataProperties.h"; sourceTree = "<group>"; };
+		ED010AF61C629A6A00117C00 /* ToDoItem+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ToDoItem+CoreDataProperties.m"; path = "../ToDoItem+CoreDataProperties.m"; sourceTree = "<group>"; };
+		ED010AF71C629A6A00117C00 /* ToDoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToDoItem.h; path = ../ToDoItem.h; sourceTree = "<group>"; };
+		ED010AF81C629A6A00117C00 /* ToDoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToDoItem.m; path = ../ToDoItem.m; sourceTree = "<group>"; };
 		EDD420311C57B87D00B20D4E /* Every.do.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Every.do.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD420351C57B87D00B20D4E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EDD420371C57B87D00B20D4E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -56,8 +66,6 @@
 		EDD420581C57B87D00B20D4E /* Every.doUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Every.doUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD4205C1C57B87D00B20D4E /* Every_doUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Every_doUITests.m; sourceTree = "<group>"; };
 		EDD4205E1C57B87D00B20D4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EDD4206A1C57BFF600B20D4E /* ToDoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToDoItem.h; path = ../ToDoItem.h; sourceTree = "<group>"; };
-		EDD4206B1C57BFF600B20D4E /* ToDoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToDoItem.m; path = ../ToDoItem.m; sourceTree = "<group>"; };
 		EDD4206D1C57CDD800B20D4E /* ItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTableViewCell.h; sourceTree = "<group>"; };
 		EDD4206E1C57CDD800B20D4E /* ItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,10 +118,14 @@
 		EDD420331C57B87D00B20D4E /* Every.do */ = {
 			isa = PBXGroup;
 			children = (
+				ED010AE01C6280ED00117C00 /* CoreDataStack.h */,
+				ED010AE11C6280ED00117C00 /* CoreDataStack.m */,
 				EDD420371C57B87D00B20D4E /* AppDelegate.h */,
 				EDD420381C57B87D00B20D4E /* AppDelegate.m */,
-				EDD4206A1C57BFF600B20D4E /* ToDoItem.h */,
-				EDD4206B1C57BFF600B20D4E /* ToDoItem.m */,
+				ED010AF51C629A6A00117C00 /* ToDoItem+CoreDataProperties.h */,
+				ED010AF61C629A6A00117C00 /* ToDoItem+CoreDataProperties.m */,
+				ED010AF71C629A6A00117C00 /* ToDoItem.h */,
+				ED010AF81C629A6A00117C00 /* ToDoItem.m */,
 				EDD4203A1C57B87D00B20D4E /* MasterViewController.h */,
 				EDD4203B1C57B87D00B20D4E /* MasterViewController.m */,
 				EDD4203D1C57B87D00B20D4E /* DetailViewController.h */,
@@ -124,6 +136,7 @@
 				EDD420431C57B87D00B20D4E /* Assets.xcassets */,
 				EDD420451C57B87D00B20D4E /* LaunchScreen.storyboard */,
 				EDD420481C57B87D00B20D4E /* Info.plist */,
+				ED010AE31C62810600117C00 /* Model.xcdatamodeld */,
 				EDD420341C57B87D00B20D4E /* Supporting Files */,
 			);
 			path = Every.do;
@@ -285,9 +298,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED010AF91C629A6A00117C00 /* ToDoItem+CoreDataProperties.m in Sources */,
 				EDD4206F1C57CDD800B20D4E /* ItemTableViewCell.m in Sources */,
 				EDD420391C57B87D00B20D4E /* AppDelegate.m in Sources */,
-				EDD4206C1C57BFF600B20D4E /* ToDoItem.m in Sources */,
+				ED010AFA1C629A6A00117C00 /* ToDoItem.m in Sources */,
+				ED010AE21C6280ED00117C00 /* CoreDataStack.m in Sources */,
+				ED010AE51C62810600117C00 /* Model.xcdatamodeld in Sources */,
 				EDD4203C1C57B87D00B20D4E /* MasterViewController.m in Sources */,
 				EDD420361C57B87D00B20D4E /* main.m in Sources */,
 				EDD4203F1C57B87D00B20D4E /* DetailViewController.m in Sources */,
@@ -514,6 +530,7 @@
 				EDD420631C57B87D00B20D4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EDD420641C57B87D00B20D4E /* Build configuration list for PBXNativeTarget "Every.doTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +539,7 @@
 				EDD420661C57B87D00B20D4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EDD420671C57B87D00B20D4E /* Build configuration list for PBXNativeTarget "Every.doUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,8 +548,23 @@
 				EDD420691C57B87D00B20D4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		ED010AE31C62810600117C00 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				ED010AE41C62810600117C00 /* Model.xcdatamodel */,
+			);
+			currentVersion = ED010AE41C62810600117C00 /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = ../Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EDD420291C57B87D00B20D4E /* Project object */;
 }
