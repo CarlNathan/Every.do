@@ -38,7 +38,8 @@
         }
     } else {
         [self.completedSwitch setOn:NO animated:NO];
-        self.descriptionTextView.text = @"";
+        self.descriptionTextView.text = self.defaultDictionary[@"defaultDescription"];
+        self.titleTextField.text = self.defaultDictionary[@"defaultTitle"];
         [self setPriorityLow];
     }
     }

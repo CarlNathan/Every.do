@@ -65,7 +65,10 @@
         DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
         controller.toDoItem = object;
     } else if ([[segue identifier] isEqualToString:@"newItem"]) {
-//        DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
+        DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        controller.defaultDictionary = [userDefaults objectForKey:@"defaultDictionary"];
+
     }
 }
 

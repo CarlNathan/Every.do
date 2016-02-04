@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *priorityButton;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (strong, nonatomic) NSDictionary *defaultDictionary;
 - (IBAction)setPriority:(UIButton *)sender;
 
 

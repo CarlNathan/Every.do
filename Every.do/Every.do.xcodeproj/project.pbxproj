@@ -11,6 +11,8 @@
 		ED010AE51C62810600117C00 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED010AE31C62810600117C00 /* Model.xcdatamodeld */; };
 		ED010AF91C629A6A00117C00 /* ToDoItem+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = ED010AF61C629A6A00117C00 /* ToDoItem+CoreDataProperties.m */; };
 		ED010AFA1C629A6A00117C00 /* ToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ED010AF81C629A6A00117C00 /* ToDoItem.m */; };
+		ED010AFC1C62AB0800117C00 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED010AFB1C62AB0800117C00 /* Property List.plist */; };
+		ED010AFF1C62C45D00117C00 /* UserDefaultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED010AFE1C62C45D00117C00 /* UserDefaultsViewController.m */; };
 		EDD420361C57B87D00B20D4E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD420351C57B87D00B20D4E /* main.m */; };
 		EDD420391C57B87D00B20D4E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD420381C57B87D00B20D4E /* AppDelegate.m */; };
 		EDD4203C1C57B87D00B20D4E /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4203B1C57B87D00B20D4E /* MasterViewController.m */; };
@@ -48,6 +50,9 @@
 		ED010AF61C629A6A00117C00 /* ToDoItem+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ToDoItem+CoreDataProperties.m"; path = "../ToDoItem+CoreDataProperties.m"; sourceTree = "<group>"; };
 		ED010AF71C629A6A00117C00 /* ToDoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToDoItem.h; path = ../ToDoItem.h; sourceTree = "<group>"; };
 		ED010AF81C629A6A00117C00 /* ToDoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToDoItem.m; path = ../ToDoItem.m; sourceTree = "<group>"; };
+		ED010AFB1C62AB0800117C00 /* Property List.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Property List.plist"; path = "../Property List.plist"; sourceTree = "<group>"; };
+		ED010AFD1C62C45D00117C00 /* UserDefaultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserDefaultsViewController.h; path = ../UserDefaultsViewController.h; sourceTree = "<group>"; };
+		ED010AFE1C62C45D00117C00 /* UserDefaultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserDefaultsViewController.m; path = ../UserDefaultsViewController.m; sourceTree = "<group>"; };
 		EDD420311C57B87D00B20D4E /* Every.do.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Every.do.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD420351C57B87D00B20D4E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EDD420371C57B87D00B20D4E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -132,11 +137,14 @@
 				EDD4203E1C57B87D00B20D4E /* DetailViewController.m */,
 				EDD4206D1C57CDD800B20D4E /* ItemTableViewCell.h */,
 				EDD4206E1C57CDD800B20D4E /* ItemTableViewCell.m */,
+				ED010AFD1C62C45D00117C00 /* UserDefaultsViewController.h */,
+				ED010AFE1C62C45D00117C00 /* UserDefaultsViewController.m */,
 				EDD420401C57B87D00B20D4E /* Main.storyboard */,
 				EDD420431C57B87D00B20D4E /* Assets.xcassets */,
 				EDD420451C57B87D00B20D4E /* LaunchScreen.storyboard */,
 				EDD420481C57B87D00B20D4E /* Info.plist */,
 				ED010AE31C62810600117C00 /* Model.xcdatamodeld */,
+				ED010AFB1C62AB0800117C00 /* Property List.plist */,
 				EDD420341C57B87D00B20D4E /* Supporting Files */,
 			);
 			path = Every.do;
@@ -273,6 +281,7 @@
 			files = (
 				EDD420471C57B87D00B20D4E /* LaunchScreen.storyboard in Resources */,
 				EDD420441C57B87D00B20D4E /* Assets.xcassets in Resources */,
+				ED010AFC1C62AB0800117C00 /* Property List.plist in Resources */,
 				EDD420421C57B87D00B20D4E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,6 +310,7 @@
 				ED010AF91C629A6A00117C00 /* ToDoItem+CoreDataProperties.m in Sources */,
 				EDD4206F1C57CDD800B20D4E /* ItemTableViewCell.m in Sources */,
 				EDD420391C57B87D00B20D4E /* AppDelegate.m in Sources */,
+				ED010AFF1C62C45D00117C00 /* UserDefaultsViewController.m in Sources */,
 				ED010AFA1C629A6A00117C00 /* ToDoItem.m in Sources */,
 				ED010AE21C6280ED00117C00 /* CoreDataStack.m in Sources */,
 				ED010AE51C62810600117C00 /* Model.xcdatamodeld in Sources */,
